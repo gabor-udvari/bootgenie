@@ -23,13 +23,14 @@
             <link rel="stylesheet" href="<?php echo $css; ?>">
         <?php endforeach; ?>
 
-        <!-- Bootstrap -->
+        <!-- Bootstrap
         <link href="<?php echo '/modules/bootgenie/assets/css/bootstrap.min.css'; ?>" rel="stylesheet">
         <link href="<?php echo '/modules/bootgenie/assets/css/bootstrap-theme.min.css'; ?>" rel="stylesheet">
-        <!-- Yamm -->
         <link href="<?php echo '/modules/bootgenie/assets/css/yamm.css'; ?>" rel="stylesheet">
+         -->
+        <link href="<?php echo '/modules/bootgenie/assets/css/bootgenie.css'; ?>" rel="stylesheet">
 
-        <?php if (false): ?>
+        <?php if (false) : ?>
         <script>
             var require = {
                 baseUrl: '<?php echo make_url('home'); ?>js',
@@ -81,24 +82,27 @@
         <?php \thebuggenie\core\framework\Event::createNew('core', 'layout.php::header-ends')->trigger(); ?>
     </head>
 
-    <body id="body">
+    <body>
         <div id="main_container" class="page-<?php echo \thebuggenie\core\framework\Context::getRouting()->getCurrentRouteName(); ?>">
-            <?php if (!in_array(\thebuggenie\core\framework\Context::getRouting()->getCurrentRouteName(), array('login_page', 'elevated_login_page', 'reset_password'))): ?>
+            <header>
                 <?php \thebuggenie\core\framework\Logging::log('Rendering header'); ?>
                 <?php require_once BOOTGENIE_PATH . 'templates/header.inc.php'; ?>
                 <?php \thebuggenie\core\framework\Logging::log('done (rendering header)'); ?>
-            <?php endif; ?>
+            </header>
             <div id="content_container" class="container">
                 <?php \thebuggenie\core\framework\Logging::log('Rendering content'); ?>
                 <?php echo $content; ?>
                 <?php \thebuggenie\core\framework\Logging::log('done (rendering content)'); ?>
             </div>
-            <?php \thebuggenie\core\framework\Event::createNew('core', 'layout.php::footer-begins')->trigger(); ?>
-            <?php require_once BOOTGENIE_PATH . 'templates/footer.inc.php'; ?>
-            <?php \thebuggenie\core\framework\Event::createNew('core', 'layout.php::footer-ends')->trigger(); ?>
+            <footer>
+                <?php \thebuggenie\core\framework\Event::createNew('core', 'layout.php::footer-begins')->trigger(); ?>
+                <?php require_once BOOTGENIE_PATH . 'templates/footer.inc.php'; ?>
+                <?php \thebuggenie\core\framework\Event::createNew('core', 'layout.php::footer-ends')->trigger(); ?>
+            </footer>
         </div>
 
-        <?php require THEBUGGENIE_CORE_PATH . 'templates/backdrops.inc.php'; ?>
+        <?php if (false ) : ?>
+        <?php require_once THEBUGGENIE_CORE_PATH . 'templates/backdrops.inc.php'; ?>
         <script type="text/javascript">
             var TBG, jQuery;
             require(['domReady', 'thebuggenie/tbg', 'jquery'], function (domReady, tbgjs, jquery) {
@@ -122,6 +126,7 @@
                 });
             });
         </script>
+        <?php endif; ?>
         <!-- Bootstrap -->
         <script src="/public/js/jquery-2.1.3.min.js"></script>
         <script src="/modules/bootgenie/assets/js/bootstrap.min.js"></script>

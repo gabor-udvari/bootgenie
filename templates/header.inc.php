@@ -1,5 +1,4 @@
-<header>
-    <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
     <div class="container-fluid">
     <div id="logo_container" class="navbar-header">
         <?php \thebuggenie\core\framework\Event::createNew('core', 'header_before_logo')->trigger(); ?>
@@ -23,5 +22,4 @@
         <?php \thebuggenie\core\framework\Event::createNew('core', 'header_menu_end')->trigger(); ?>
     <?php endif; ?>
     </div>
-    </nav>
-</header>
+</nav>

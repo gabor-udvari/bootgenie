@@ -32,6 +32,8 @@
         protected $_module_config_title = 'Bootgenie';
         protected $_module_config_description = 'Set up the Bootgenie module from this section';
 
+        protected $_enabled = false;
+
         /**
          * Return an instance of this module
          *
@@ -49,7 +51,9 @@
 
         protected function _addListeners()
         {
-            framework\Event::listen('core', '\thebuggenie\core\framework\Context::renderBegins', array($this, 'listen_renderBegins'));
+            if (true) {
+                framework\Event::listen('core', '\thebuggenie\core\framework\Context::renderBegins', array($this, 'listen_renderBegins'));
+            }
         }
 
         protected function _install($scope)
