@@ -11,22 +11,27 @@
             </li>
         <?php elseif (framework\Context::isProjectContext()): ?>
             <?php $page = (in_array($tbg_response->getPage(), array('project_dashboard', 'project_scrum_sprint_details', 'project_timeline', 'project_team', 'project_roadmap', 'project_statistics', 'vcs_commitspage'))) ? $tbg_response->getPage() : 'project_dashboard'; ?>
-            <li<?php if (in_array($tbg_response->getPage(), array('project_dashboard', 'project_scrum_sprint_details', 'project_timeline', 'project_team', 'project_roadmap', 'project_statistics', 'vcs_commitspage'))): ?> class="selected"<?php endif; ?>>
-                <?php echo link_tag(make_url($page, array('project_key' => framework\Context::getCurrentProject()->getKey())), image_tag('icon_dashboard_small.png') . tbg_get_pagename($tbg_response->getPage())); ?>
-                <?php // echo javascript_link_tag(image_tag('tabmenu_dropdown.png', array('class' => 'menu_dropdown'))); ?>
-                <div id="project_information_menu" class="tab_menu_dropdown yamm-content">
-                    <?php include_component('project/projectinfolinks', array('submenu' => true)); ?>
-                </div>
+            <li<?php if (in_array($tbg_response->getPage(), array('project_dashboard', 'project_scrum_sprint_details', 'project_timeline', 'project_team', 'project_roadmap', 'project_statistics', 'vcs_commitspage'))): ?> class="selected"<?php endif; ?> class="dropdown">
+                <a href="<?php echo make_url($page, array('project_key' => framework\Context::getCurrentProject()->getKey())); ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo image_tag('icon_dashboard_small.png') . tbg_get_pagename($tbg_response->getPage()); ?></a>
+                <ul class="dropdown-menu">
+                <li>
+                    <?php // echo javascript_link_tag(image_tag('tabmenu_dropdown.png', array('class' => 'menu_dropdown'))); ?>
+                    <div id="project_information_menu" class="tab_menu_dropdown yamm-content">
+                        <?php include_component('project/projectinfolinks', array('submenu' => true)); ?>
+                    </div>
+                </li>
+                </ul>
             </li>
         <?php endif; ?>
 
         <?php if (!$tbg_user->isThisGuest() && !framework\Settings::isSingleProjectTracker() && !framework\Context::isProjectContext()): ?>
-                <li<?php if ($tbg_response->getPage() == 'dashboard'): ?> class="selected"<?php endif; ?>>
-                    <?php echo link_tag('javascript:void(0);', image_tag('icon_dashboard_small.png') . __('Dashboard')); ?>
-                    <?php // echo javascript_link_tag(image_tag('tabmenu_dropdown.png', array('class' => 'menu_dropdown'))); ?>
-                    <div class="tab_menu_dropdown yamm-content">
-                        <?php echo link_tag(make_url('dashboard'), __('My dashboard'), ((in_array($tbg_response->getPage(), array('dashboard'))) ? array('class' => 'selected') : array())); ?>
-                    </div>
+                <li<?php if ($tbg_response->getPage() == 'dashboard'): ?> class="selected"<?php endif; ?> class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo image_tag('icon_dashboard_small.png') . __('Dashboard'); ?> <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <?php echo link_tag(make_url('dashboard'), __('My dashboard'), ((in_array($tbg_response->getPage(), array('dashboard'))) ? array('class' => 'selected') : array())); ?>
+                        </li>
+                    </ul>
                 </li>
         <?php endif; ?>
 
