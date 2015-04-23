@@ -77,15 +77,16 @@
         <?php endif; ?>
 
         <?php if (!framework\Context::isProjectContext() && ($tbg_user->hasPageAccess('teamlist') || count($tbg_user->getTeams())) && !is_null(\thebuggenie\core\entities\tables\Teams::getTable()->getAll())): ?>
-            <li<?php if ($tbg_response->getPage() == 'team'): ?> class="selected"<?php endif; ?>>
-                <?php echo link_tag('javascript:void(0)', image_tag('tab_teams.png') . __('Teams'), array('class' => 'not_clickable')); ?>
-                <?php // echo javascript_link_tag(image_tag('tabmenu_dropdown.png', array('class' => 'menu_dropdown')), array('onmouseover' => "")); ?>
-                <div id="team_menu" class="tab_menu_dropdown yamm-content">
+            <li class="dropdown <?php echo ($tbg_response->getPage() == 'team') ? 'selected' : ''; ?>">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo image_tag('tab_teams.png') . __('Teams'); ?> <span class="caret"></span></a>
+                <ul class="dropdown-menu">
                     <?php foreach (\thebuggenie\core\entities\Team::getAll() as $team): ?>
-                        <?php if (!$team->hasAccess()) continue; ?>
-                        <?php echo link_tag(make_url('team_dashboard', array('team_id' => $team->getID())), image_tag('tab_teams.png') . $team->getName()); ?>
+                    <?php if (!$team->hasAccess()) continue; ?>
+                    <li>
+                        <a href="<?php echo make_url('team_dashboard', array('team_id' => $team->getID())); ?>"><?php echo image_tag('tab_teams.png') . $team->getName(); ?></a>
+                    </li>
                     <?php endforeach; ?>
-                </div>
+                </ul> <!-- /.dropdown-menu -->
             </li>
         <?php endif; ?>
 

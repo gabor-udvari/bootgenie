@@ -23,11 +23,6 @@
             <link rel="stylesheet" href="<?php echo $css; ?>">
         <?php endforeach; ?>
 
-        <!-- Bootstrap
-        <link href="<?php echo '/modules/bootgenie/assets/css/bootstrap.min.css'; ?>" rel="stylesheet">
-        <link href="<?php echo '/modules/bootgenie/assets/css/bootstrap-theme.min.css'; ?>" rel="stylesheet">
-        <link href="<?php echo '/modules/bootgenie/assets/css/yamm.css'; ?>" rel="stylesheet">
-         -->
         <link href="<?php echo '/modules/bootgenie/assets/css/bootgenie.css'; ?>" rel="stylesheet">
 
         <?php if (false) : ?>

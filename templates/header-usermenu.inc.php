@@ -4,10 +4,11 @@
             <?php if ($tbg_user->isGuest()): ?>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo image_tag($tbg_user->getAvatarURL(true), array('alt' => '[avatar]', 'class' => 'guest_avatar'), true) . __('You are not logged in'); ?> <span class="caret"></span></a>
             <?php else: ?>
-                <?php echo link_tag(make_url('dashboard'), image_tag($tbg_user->getAvatarURL(true), array('alt' => '[avatar]', 'id' => 'header_avatar'), true) . '<span id="header_user_fullname">'.tbg_decodeUTF8($tbg_user->getDisplayName()).'</span>'); ?>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo image_tag($tbg_user->getAvatarURL(true), array('alt' => '[avatar]', 'id' => 'header_avatar'), true) . '<span id="header_user_fullname">'.tbg_decodeUTF8($tbg_user->getDisplayName()).'</span>'; ?> <span class="caret"></span></a>
             <?php endif; ?>
 
             <?php if (\thebuggenie\core\framework\Event::createNew('core', 'header_usermenu_decider')->trigger()->getReturnValue() !== false): ?>
+
             <ul class="dropdown-menu">
                 <?php if ($tbg_user->isGuest()): ?>
                     <li>
@@ -20,8 +21,8 @@
                     <?php endif; ?>
                     <?php \thebuggenie\core\framework\Event::createNew('core', 'user_dropdown_anon')->trigger(); ?>
                 <?php else: ?>
-                <li>
-                <div class="tab_menu_dropdown user_menu_dropdown yamm-content" id="user_menu">
+                    <li>
+                    <div class="yamm-content" id="user_menu">
                         <div class="header" style="margin-bottom: 5px;">
                             <a href="javascript:void(0);" onclick="$('usermenu_changestate').toggle();" id="usermenu_changestate_toggler" class="button button-silver"><?php echo __('Change'); ?></a>
                             <?php echo image_tag('spinning_16.gif', array('style' => 'display: none;', 'id' => 'change_userstate_dropdown')); ?>
@@ -33,25 +34,30 @@
                                 <a href="javascript:void(0);" onclick="TBG.Main.Profile.setState('<?php echo make_url('set_state', array('state_id' => $state->getID())); ?>', 'change_userstate_dropdown');"><?php echo __($state->getName()); ?></a>
                             <?php endforeach; ?>
                         </div>
-                        <?php echo link_tag(make_url('dashboard'), image_tag('icon_dashboard_small.png').__('Your dashboard')); ?>
+                        <ul>
+                            <li><?php echo link_tag(make_url('dashboard'), image_tag('icon_dashboard_small.png').__('Your dashboard')); ?></li>
                         <?php if ($tbg_response->getPage() == 'dashboard'): ?>
-                            <?php echo javascript_link_tag(image_tag('icon_dashboard_config.png').__('Customize your dashboard'), array('title' => __('Customize your dashboard'), 'onclick' => "$$('.dashboard').each(function (elm) { elm.toggleClassName('editable');});")); ?>
+                            <li><?php echo javascript_link_tag(image_tag('icon_dashboard_config.png').__('Customize your dashboard'), array('title' => __('Customize your dashboard'), 'onclick' => "$$('.dashboard').each(function (elm) { elm.toggleClassName('editable');});")); ?></li>
                         <?php endif; ?>
-                        <?php echo link_tag(make_url('account'), image_tag('icon_account.png').__('Your account')); ?>
+                            <li><?php echo link_tag(make_url('account'), image_tag('icon_account.png').__('Your account')); ?></li></li>
                         <?php if ($tbg_request->hasCookie('tbg3_original_username')): ?>
                             <div class="header"><?php echo __('You are temporarily this user'); ?></div>
                             <?php echo link_tag(make_url('switch_back_user'), image_tag('switchuser.png').__('Switch back to original user')); ?>
                         <?php endif; ?>
                         <?php if ($tbg_user->canAccessConfigurationPage()): ?>
-                            <?php echo link_tag(make_url('configure'), image_tag('tab_config.png').__('Configure %thebuggenie_name', array('%thebuggenie_name' => \thebuggenie\core\framework\Settings::getSiteHeaderName()))); ?>
+                            <li><?php echo link_tag(make_url('configure'), image_tag('tab_config.png').__('Configure %thebuggenie_name', array('%thebuggenie_name' => \thebuggenie\core\framework\Settings::getSiteHeaderName()))); ?></li>
                         <?php endif; ?>
                         <?php \thebuggenie\core\framework\Event::createNew('core', 'user_dropdown_reg')->trigger(); ?>
-                        <?php echo link_tag('http://www.thebuggenie.com/help/'.\thebuggenie\core\framework\Context::getRouting()->getCurrentRouteName(), image_tag('help.png').__('Help for this page'), array('id' => 'global_help_link')); ?>
-                        <a href="<?php echo make_url('logout'); ?>" onclick="<?php if (\thebuggenie\core\framework\Settings::isPersonaAvailable()): ?>if (navigator.id) { navigator.id.logout();return false; }<?php endif; ?>"><?php echo image_tag('logout.png').__('Logout'); ?></a>
+
+                            <li><?php echo link_tag('http://www.thebuggenie.com/help/'.\thebuggenie\core\framework\Context::getRouting()->getCurrentRouteName(), image_tag('help.png').__('Help for this page'), array('id' => 'global_help_link')); ?></li>
+                            <li><a href="<?php echo make_url('logout'); ?>" onclick="<?php if (\thebuggenie\core\framework\Settings::isPersonaAvailable()): ?>if (navigator.id) { navigator.id.logout();return false; }<?php endif; ?>"><?php echo image_tag('logout.png').__('Logout'); ?></a></li>
+                        </ul>
                         <div class="header"><?php echo __('Your issues'); ?></div>
-                        <?php echo link_tag(make_url('my_reported_issues'), image_tag('icon_savedsearch.png') . __('Issues reported by me')); ?>
-                        <?php echo link_tag(make_url('my_assigned_issues'), image_tag('icon_savedsearch.png') . __('Open issues assigned to me')); ?>
-                        <?php echo link_tag(make_url('my_teams_assigned_issues'), image_tag('icon_savedsearch.png') . __('Open issues assigned to my teams')); ?>
+                        <ul>
+                            <li><?php echo link_tag(make_url('my_reported_issues'), image_tag('icon_savedsearch.png') . __('Issues reported by me')); ?></li>
+                            <li><?php echo link_tag(make_url('my_assigned_issues'), image_tag('icon_savedsearch.png') . __('Open issues assigned to me')); ?></li>
+                            <li><?php echo link_tag(make_url('my_teams_assigned_issues'), image_tag('icon_savedsearch.png') . __('Open issues assigned to my teams')); ?></li>
+                        </ul>
                     </div><!-- /.yamm-content -->
                     </li>
                 <?php endif; ?>
