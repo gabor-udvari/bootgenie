@@ -2,25 +2,40 @@
 
 // Page header
 .logo, .logo_name {
-	float: left;
+  float: left;
 }
 
 .logo_name {
-	margin-right: 15px;
+  margin-right: 15px;
 }
 
 // Navigation
 .nav li img {
-	float: left;
-	margin-right: 5px;
+  float: left;
+  margin-right: 5px;
+}
+
+// Breadcrumb
+
+.breadcrumb li a {
+  height: @input-height-base;
+  line-height: @line-height-base;
+  padding: @padding-base-vertical 0;
+  display: inline-block;
+}
+
+.breadcrumb > li + li.breadcrumb-form::before {
+  content: none;
+  padding: 0px 5px;
+  color: #CCC;
 }
 
 // Page footer
 footer {
-	margin-top: 15px;
+  margin-top: 15px;
 }
 
 footer .container {
-	padding-top: 15px;
-	border-top: 1px solid @gray-lighter;
+  padding-top: 15px;
+  border-top: 1px solid @gray-lighter;
 }

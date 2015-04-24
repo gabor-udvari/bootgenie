@@ -6572,16 +6572,27 @@ button.close {
   left: 0;
   right: 0;
 }
-.nav li img {
-  float: left;
-  margin-right: 10px;
-}
 .logo,
 .logo_name {
   float: left;
 }
 .logo_name {
   margin-right: 15px;
+}
+.nav li img {
+  float: left;
+  margin-right: 5px;
+}
+.breadcrumb li a {
+  height: 34px;
+  line-height: 1.42857143;
+  padding: 6px 0;
+  display: inline-block;
+}
+.breadcrumb > li + li.breadcrumb-form::before {
+  content: none;
+  padding: 0px 5px;
+  color: #CCC;
 }
 footer {
   margin-top: 15px;
