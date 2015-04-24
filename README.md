@@ -15,7 +15,7 @@ A [Bootstrap](http://getbootstrap.com/) theme for [The Bug Genie](https://github
    - Make the HTML output indent propely and nice to look at
 - Specification (August 2015):
    - Make a specification with the original The Bug Genie theme so every feature can be compared, checked and tested
-	 - Possible unit or gui testing (?)
+   - Possible unit or gui testing (?)
 - Enrichment (October 2015):
    - Add back dynamic JavaScript features
 
