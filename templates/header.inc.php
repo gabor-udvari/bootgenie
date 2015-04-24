@@ -9,17 +9,15 @@
 
     <?php if (!\thebuggenie\core\framework\Settings::isMaintenanceModeEnabled()): ?>
         <div id="topmenu-container">
-            <div class="navbar-inner">
             <?php if (\thebuggenie\core\framework\Event::createNew('core', 'header_mainmenu_decider')->trigger()->getReturnValue() !== false): ?>
                 <?php require_once BOOTGENIE_PATH . 'templates/header-mainmenu.inc.php'; ?>
             <?php endif; ?>
             <?php require_once BOOTGENIE_PATH . 'templates/header-usermenu.inc.php'; ?>
-            </div>
-        </div>
+        </div> <!-- #topmenu-container -->
         <?php if (\thebuggenie\core\framework\Event::createNew('core', 'header_mainmenu_decider')->trigger()->getReturnValue() !== false): ?>
             <?php // require THEBUGGENIE_CORE_PATH . 'templates/submenu.inc.php'; ?>
         <?php endif; ?>
         <?php \thebuggenie\core\framework\Event::createNew('core', 'header_menu_end')->trigger(); ?>
     <?php endif; ?>
-    </div>
+    </div> <!-- /.container-fluid -->
 </nav>

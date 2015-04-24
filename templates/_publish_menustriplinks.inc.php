@@ -1,12 +1,8 @@
-<li<?php if (strpos($selected_tab, 'publish_') === 0): ?> class="selected"<?php endif; ?>>
+<li<?php if (strpos($tbg_response->getPage(), 'publish') === 0): ?> class="active"<?php endif; ?>>
     <?php if (!isset($wiki_url)): ?>
         <?php echo link_tag(((isset($project_url)) ? $project_url : $url), image_tag('tab_publish.png', array(), false, 'publish') . \thebuggenie\core\framework\Context::getModule('publish')->getMenuTitle()); ?>
     <?php else: ?>
         <?php echo link_tag($wiki_url, \thebuggenie\core\framework\Context::getModule('publish')->getMenuTitle(), array('target' => 'blank')) ?>
-    <?php endif; ?>
-
-    <?php if (count(\thebuggenie\core\entities\Project::getAll())): ?>
-        <?php echo javascript_link_tag(image_tag('tabmenu_dropdown.png', array('class' => 'menu_dropdown'))); ?>
     <?php endif; ?>
 
     <?php if (count(\thebuggenie\core\entities\Project::getAll())): ?>

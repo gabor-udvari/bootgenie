@@ -6572,6 +6572,10 @@ button.close {
   left: 0;
   right: 0;
 }
+.nav li img {
+  float: left;
+  margin-right: 10px;
+}
 .logo,
 .logo_name {
   float: left;
