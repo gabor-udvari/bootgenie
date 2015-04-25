@@ -52,6 +52,9 @@
         protected function _addListeners()
         {
             if (true) {
+                // listen for renderTemplate (overwrite module action templates)
+                framework\Event::listen('core', 'self::performAction::renderTemplate', array($this, 'listen_renderTemplate'));
+                // listen for renderBegins (overwrite layout and components)
                 framework\Event::listen('core', '\thebuggenie\core\framework\Context::renderBegins', array($this, 'listen_renderBegins'));
             }
         }
@@ -68,7 +71,14 @@
         {
         }
 
-        public function listen_renderBegins()
+        public function listen_renderTemplate(framework\Event $event)
+        {
+            framework\Context::getResponse()->setTemplate('bootgenie/main_index');
+            $event->setProcessed();                                                                                       
+            // $event->setReturnValue(''); // not needed
+        }
+
+        public function listen_renderBegins(framework\Event $event)
         {
             // Set core layout path
             framework\Context::getResponse()->setLayoutPath(BOOTGENIE_PATH . 'templates');
