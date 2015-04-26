@@ -4,7 +4,7 @@
     $tbg_response->addBreadcrumb(__('Frontpage'), make_url('home'), tbg_get_breadcrumblinks('main_links'));
 
 ?>
-<?php if ($show_project_config_link && $show_project_list): ?>
+<?php if (isset($show_project_config_link) && $show_project_config_link && isset($show_project_list) && $show_project_list): ?>
     <?php if ($project_count == 1): ?>
 <div class="container">
         <?php include_component('main/hideableInfoBoxModal', array('key' => 'index_single_project_mode', 'title' => __('Only using The Bug Genie to track issues for one project?'), 'template' => 'main/intro_index_single_tracker')); ?>
@@ -16,12 +16,12 @@
 <div class="container">
     <div class="row">
     <aside class="col-md-4">
-            <?php include_component('main/menulinks', array('links' => $links, 'target_type' => 'main_menu', 'target_id' => 0, 'title' => __('Quick links'))); ?>
+            <?php // include_component('main/menulinks', array('links' => $links, 'target_type' => 'main_menu', 'target_id' => 0, 'title' => __('Quick links'))); ?>
             <?php \thebuggenie\core\framework\Event::createNew('core', 'index_left')->trigger(); ?>
     </aside>
     <section class="main_area frontpage col-md-8">
             <?php \thebuggenie\core\framework\Event::createNew('core', 'index_right_top')->trigger(); ?>
-            <?php if ($show_project_list): ?>
+            <?php if (isset($show_project_list) && $show_project_list): ?>
                 <div class="project_overview">
                     <div class="header">
                         <?php echo __('Projects'); ?>
