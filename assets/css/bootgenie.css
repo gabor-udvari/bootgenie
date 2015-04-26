@@ -6596,8 +6596,8 @@ button.close {
 }
 footer {
   margin-top: 15px;
+  border-top: 1px solid #eeeeee;
 }
 footer .container {
   padding-top: 15px;
-  border-top: 1px solid #eeeeee;
 }
