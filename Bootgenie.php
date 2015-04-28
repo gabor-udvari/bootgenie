@@ -90,6 +90,7 @@
             // Add override rules
             self::addOverride('publish/menustriplinks', 'bootgenie/publish_menustriplinks', 'component');
             self::addOverride('main/index', 'bootgenie/main_index', 'action');
+            self::addOverride('main/menulinks', 'bootgenie/main_menulinks', 'component');
         }
 
         protected function _addListeners()
@@ -123,6 +124,10 @@
          */
         public function listen_renderTemplate(framework\Event $event)
         {
+            // set override map for components
+            framework\Context::getRouting()->setComponentOverrideMap( self::getComponentOverrideMap() );
+
+            // set override map for actions
             $actionmap = self::getActionOverrideMap();
             foreach( $actionmap as $value){
                 if ( stripos($event->getParameter('class'), $value['class']) !== FALSE && stripos($event->getParameter('action'), $value['action']) !== FALSE) {
@@ -137,8 +142,6 @@
         {
             // Set core layout path
             framework\Context::getResponse()->setLayoutPath(BOOTGENIE_PATH . 'templates');
-            // set override map
-            framework\Context::getRouting()->setComponentOverrideMap( self::getComponentOverrideMap() );
         }
 
     }

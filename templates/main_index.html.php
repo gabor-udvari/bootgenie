@@ -15,7 +15,7 @@
 
 <div class="row">
 <aside class="col-md-4">
-        <?php // include_component('main/menulinks', array('links' => $links, 'target_type' => 'main_menu', 'target_id' => 0, 'title' => __('Quick links'))); ?>
+        <?php include_component('main/menulinks', array('links' => $links, 'target_type' => 'main_menu', 'target_id' => 0, 'title' => __('Quick links'))); ?>
         <?php \thebuggenie\core\framework\Event::createNew('core', 'index_left')->trigger(); ?>
 </aside>
 <section class="main_area frontpage col-md-8">
