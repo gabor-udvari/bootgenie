@@ -25,7 +25,6 @@
         protected $_module_config_title = 'Bootgenie';
         protected $_module_config_description = 'Set up the Bootgenie module from this section';
 
-        protected $_enabled = false;
         protected $_overridemap = ['components'=>[], 'actions'=>[]];
 
         /**
@@ -91,11 +90,14 @@
             self::addOverride('publish/menustriplinks', 'bootgenie/publish_menustriplinks', 'component');
             self::addOverride('main/index', 'bootgenie/main_index', 'action');
             self::addOverride('main/menulinks', 'bootgenie/main_menulinks', 'component');
+
+            // Disable for testing
+            // $this->_enabled = false;
         }
 
         protected function _addListeners()
         {
-            if (true) {
+            if ( $this->_enabled == true ) {
                 // listen for renderTemplate (overwrite module action templates)
                 framework\Event::listen('core', 'self::performAction::renderTemplate', array($this, 'listen_renderTemplate'));
                 // listen for renderBegins (overwrite layout and components)
