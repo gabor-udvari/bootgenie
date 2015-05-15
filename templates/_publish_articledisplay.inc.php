@@ -1,4 +1,11 @@
-<?php \thebuggenie\core\framework\Context::loadLibrary('publish/publish'); ?>
+<?php
+\thebuggenie\core\framework\Context::loadLibrary('publish/publish');
+
+if (!isset($show_article)){
+    $show_article = true;
+}
+?>
+
 <div class="article syntax_<?php echo \thebuggenie\core\framework\Settings::getSyntaxClass($article->getContentSyntax()); ?>">
     <?php if ($show_title): ?>
         <?php include_component('publish/header', array('article_name' => $article->getName(), 'article' => $article, 'show_actions' => $show_actions, 'mode' => $mode, 'embedded' => $embedded)); ?>

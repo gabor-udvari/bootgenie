@@ -95,6 +95,9 @@
             self::addOverride('publish/showarticle', 'bootgenie/publish_showarticle', 'action');
             self::addOverride('publish/articledisplay', 'bootgenie/publish_articledisplay', 'component');
             self::addOverride('publish/menustriplinks', 'bootgenie/publish_menustriplinks', 'component');
+            self::addOverride('publish/whatlinkshere', 'bootgenie/publish_whatlinkshere', 'component');
+            self::addOverride('publish/tools', 'bootgenie/publish_tools', 'component');
+            self::addOverride('publish/latestArticles', 'bootgenie/publish_latestArticles', 'component');
 
             // Disable for testing
             // $this->_enabled = false;
