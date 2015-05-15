@@ -27,7 +27,7 @@
 
         protected $_overridemap = ['components'=>[], 'actions'=>[]];
 
-        protected $debug = true;
+        protected $debug = false;
 
         /**
          * Return an instance of this module
@@ -92,11 +92,13 @@
             self::addOverride('main/index', 'bootgenie/main_index', 'action');
             self::addOverride('main/menulinks', 'bootgenie/main_menulinks', 'component');
 
-            self::addOverride('publish/articledisplay', 'bootgenie/publish_articledisplay', 'action');
+            self::addOverride('publish/showarticle', 'bootgenie/publish_showarticle', 'action');
+            self::addOverride('publish/articledisplay', 'bootgenie/publish_articledisplay', 'component');
             self::addOverride('publish/menustriplinks', 'bootgenie/publish_menustriplinks', 'component');
 
             // Disable for testing
             // $this->_enabled = false;
+            // $this->$debug = true;
         }
 
         protected function _addListeners()
