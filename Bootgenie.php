@@ -27,6 +27,8 @@
 
         protected $_overridemap = ['components'=>[], 'actions'=>[]];
 
+        protected $debug = true;
+
         /**
          * Return an instance of this module
          *
@@ -90,8 +92,8 @@
             self::addOverride('main/index', 'bootgenie/main_index', 'action');
             self::addOverride('main/menulinks', 'bootgenie/main_menulinks', 'component');
 
-            self::addOverride('publish/menustriplinks', 'bootgenie/publish_menustriplinks', 'component');
             self::addOverride('publish/articledisplay', 'bootgenie/publish_articledisplay', 'action');
+            self::addOverride('publish/menustriplinks', 'bootgenie/publish_menustriplinks', 'component');
 
             // Disable for testing
             // $this->_enabled = false;
@@ -120,7 +122,7 @@
         }
 
         /**
-         * Get an override map containing all the actions
+         * Listen to the renderTemplate function and override any template
          *
          * @param framework\Event $event Event with the 'class' and 'action' parameters
          *
@@ -146,6 +148,13 @@
         {
             // Set core layout path
             framework\Context::getResponse()->setLayoutPath(BOOTGENIE_PATH . 'templates');
+
+            if ($this->debug) {
+                echo '<div class="alert alert-info" role="alert">';
+                echo '<p>page: '.framework\Context::getResponse()->getPage().'</p>';
+                echo '<p>template: '.framework\Context::getResponse()->getTemplate().'</p>';
+                echo '</div>';
+            }
         }
 
     }
