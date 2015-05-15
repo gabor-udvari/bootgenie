@@ -22,18 +22,19 @@
         <?php \thebuggenie\core\framework\Event::createNew('core', 'index_right_top')->trigger(); ?>
         <?php if (isset($show_project_list) && $show_project_list): ?>
             <div class="project_overview">
-                <div class="header">
+                <div class="header clearfix">
                     <?php echo __('Projects'); ?>
-                    <div class="dropper_container">
-                        <a href="javascript:void(0);" class="dropper dynamic_menu_link"><?php echo image_tag('icon-mono-settings.png'); ?></a>
-                        <ul class="more_actions_dropdown popup_box">
+                    <div class="btn-group">
+                        <button type="button" data-toggle="dropdown" aria-expanded="false" class="btn btn-default dropdown-toggle"><?php echo image_tag('icon-mono-settings.png'); ?><span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
                             <?php if ($show_project_config_link): ?>
                                 <li><?php echo link_tag(make_url('configure_projects'), __('Manage projects')); ?></li>
                             <?php endif; ?>
                             <li><a href="javascript:void(0);" onclick="TBG.Main.Helpers.Backdrop.show('<?php echo make_url('get_partial_for_backdrop', array('key' => 'archived_projects')); ?>');"><?php echo __('Show archived projects'); ?></a></li>
                         </ul>
                     </div>
-                </div>
+                </div><!-- /.header -->
+
                 <?php if ($project_count > 0): ?>
                     <ul class="project_list simple_list">
                     <?php foreach ($projects as $project): ?>

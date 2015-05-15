@@ -87,9 +87,11 @@
             define('BOOTGENIE_PATH', THEBUGGENIE_PATH . 'modules/bootgenie/');
 
             // Add override rules
-            self::addOverride('publish/menustriplinks', 'bootgenie/publish_menustriplinks', 'component');
             self::addOverride('main/index', 'bootgenie/main_index', 'action');
             self::addOverride('main/menulinks', 'bootgenie/main_menulinks', 'component');
+
+            self::addOverride('publish/menustriplinks', 'bootgenie/publish_menustriplinks', 'component');
+            self::addOverride('publish/articledisplay', 'bootgenie/publish_articledisplay', 'action');
 
             // Disable for testing
             // $this->_enabled = false;
