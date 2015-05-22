@@ -3,10 +3,10 @@
     include_component('publish/wikibreadcrumbs', array('article_name' => $article_name));
     \thebuggenie\core\framework\Context::loadLibrary('publish/publish');
     $tbg_response->setTitle($article_name);
-
 ?>
-<div class="row">
-<aside class="col-md-4 <?php if ($article->getArticleType() == \thebuggenie\modules\publish\entities\Article::TYPE_MANUAL) echo 'manual'; ?>">
+
+<div class="main-wrapper">
+<aside class="sidebar <?php if ($article->getArticleType() == \thebuggenie\modules\publish\entities\Article::TYPE_MANUAL) echo 'manual'; ?>">
             <?php if ($article->getArticleType() == \thebuggenie\modules\publish\entities\Article::TYPE_MANUAL): ?>
                 <?php include_component('manualsidebar', array('article' => $article)); ?>
             <?php else: ?>
@@ -14,7 +14,7 @@
             <?php endif; ?>
 </aside>
 
-<section class="main_area article col-md-8">
+<section class="main article">
             <a name="top"></a>
             <?php if ($error): ?>
                 <div class="redbox">
@@ -78,4 +78,4 @@
                     <?php include_component('main/comments', array('target_id' => $article->getID(), 'mentionable_target_type' => 'article', 'target_type' => \thebuggenie\core\entities\Comment::TYPE_ARTICLE, 'show_button' => false, 'comment_count_div' => 'article_comment_count', 'forward_url' => make_url('publish_article', array('article_name' => $article->getName())))); ?>
                 </div>
             <?php endif; ?>
-</section> <!-- main_area -->
+</section> <!-- /.main -->

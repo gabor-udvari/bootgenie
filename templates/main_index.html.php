@@ -13,12 +13,12 @@
 </div>
 <?php endif; ?>
 
-<div class="row">
-<aside class="col-md-4">
+<div class="main-wrapper">
+<aside class="sidebar">
         <?php include_component('main/menulinks', array('links' => $links, 'target_type' => 'main_menu', 'target_id' => 0, 'title' => __('Quick links'))); ?>
         <?php \thebuggenie\core\framework\Event::createNew('core', 'index_left')->trigger(); ?>
 </aside>
-<section class="main_area frontpage col-md-8">
+<section class="main frontpage">
         <?php \thebuggenie\core\framework\Event::createNew('core', 'index_right_top')->trigger(); ?>
         <?php if (isset($show_project_list) && $show_project_list): ?>
             <div class="project_overview">
@@ -54,4 +54,4 @@
             </div>
         <?php endif; ?>
         <?php \thebuggenie\core\framework\Event::createNew('core', 'index_right_bottom')->trigger(); ?>
-</section> <!-- main_area -->
+</section> <!-- /.main -->
