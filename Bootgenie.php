@@ -93,6 +93,7 @@
             self::addOverride('main/menulinks', 'bootgenie/main_menulinks', 'component');
 
             self::addOverride('publish/showarticle', 'bootgenie/publish_showarticle', 'action');
+            self::addOverride('publish/specialarticle', 'bootgenie/publish_specialarticle', 'action');
             self::addOverride('publish/articledisplay', 'bootgenie/publish_articledisplay', 'component');
             self::addOverride('publish/menustriplinks', 'bootgenie/publish_menustriplinks', 'component');
             self::addOverride('publish/whatlinkshere', 'bootgenie/publish_whatlinkshere', 'component');
@@ -100,8 +101,8 @@
             self::addOverride('publish/latestArticles', 'bootgenie/publish_latestArticles', 'component');
 
             // Disable for testing
-            // $this->_enabled = false;
-            // $this->$debug = true;
+            //  $this->_enabled = false;
+            $this->debug = true;
         }
 
         protected function _addListeners()
@@ -140,8 +141,9 @@
 
             // set override map for actions
             $actionmap = self::getActionOverrideMap();
+            $template = framework\Context::getResponse()->getTemplate();
             foreach( $actionmap as $value){
-                if ( stripos($event->getParameter('class'), $value['class']) !== FALSE && stripos($event->getParameter('action'), $value['action']) !== FALSE) {
+                if ( stripos($event->getParameter('class'), $value['class']) !== FALSE && stripos($template, $value['action']) !== FALSE) {
                     framework\Context::getResponse()->setTemplate($value['template']);
                 }
             }
