@@ -101,7 +101,7 @@
             self::addOverride('publish/latestArticles', 'bootgenie/publish_latestArticles', 'component');
 
             // Disable for testing
-            //  $this->_enabled = false;
+            // $this->_enabled = false;
             $this->debug = true;
         }
 

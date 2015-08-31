@@ -1,0 +1,16 @@
+{
+    "name": "gabor-udvari/bootgenie",
+    "description": "Bootstrap theme for The Bug Genie",
+    "license": "MPL-2.0",
+    "authors": [
+        {
+            "name": "Gábor Udvari",
+            "email": "gabor.udvari@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "codegyre/robo": "*",
+        "fxp/composer-asset-plugin": "~1.0"
+    }
+}
