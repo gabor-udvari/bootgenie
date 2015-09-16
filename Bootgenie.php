@@ -20,6 +20,7 @@
 
         const VERSION = '0.1';
 
+        protected $_name = 'bootgenie';
         protected $_longname = 'Bootgenie';
         protected $_description = 'Bootgenie description here';
         protected $_module_config_title = 'Bootgenie';
