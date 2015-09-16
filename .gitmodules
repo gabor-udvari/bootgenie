@@ -1,6 +1,0 @@
-[submodule "sources/bootstrap"]
-	path = sources/bootstrap
-	url = git@github.com:twbs/bootstrap.git
-[submodule "sources/yamm3"]
-	path = sources/yamm3
-	url = git@github.com:geedmo/yamm3.git
