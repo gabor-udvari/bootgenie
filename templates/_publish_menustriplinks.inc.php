@@ -1,12 +1,14 @@
-<li<?php if (strpos($tbg_response->getPage(), 'publish') === 0): ?> class="active"<?php endif; ?>>
+<li class="dropdown" <?php if (strpos($tbg_response->getPage(), 'publish') === 0): ?> class="active"<?php endif; ?>>
     <?php if (!isset($wiki_url)): ?>
-        <?php echo link_tag(((isset($project_url)) ? $project_url : $url), image_tag('tab_publish.png', array(), false, 'publish') . \thebuggenie\core\framework\Context::getModule('publish')->getMenuTitle()); ?>
+        <a href="<?php echo ((isset($project_url)) ? $project_url : $url); ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo image_tag('tab_publish.png', array(), false, 'publish'); ?> <?php echo \thebuggenie\core\framework\Context::getModule('publish')->getMenuTitle(); ?> <span class="caret"></span></a>
     <?php else: ?>
         <?php echo link_tag($wiki_url, \thebuggenie\core\framework\Context::getModule('publish')->getMenuTitle(), array('target' => 'blank')) ?>
     <?php endif; ?>
 
     <?php if (count(\thebuggenie\core\entities\Project::getAll())): ?>
-        <div id="wiki_dropdown_menu" class="tab_menu_dropdown">
+     <ul class="dropdown-menu">
+        <li>
+        <div id="wiki_dropdown_menu" class="tab_menu_dropdown yamm-content">
             <?php if (\thebuggenie\core\framework\Context::isProjectContext()): ?>
             <div class="header"><?php echo \thebuggenie\core\framework\Context::getCurrentProject()->getName(); ?></div>
                 <?php if (!isset($wiki_url)): ?>
@@ -41,5 +43,6 @@
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
+        </li></ul>
     <?php endif; ?>
 </li>

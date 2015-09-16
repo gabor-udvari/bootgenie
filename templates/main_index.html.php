@@ -10,7 +10,6 @@
     <?php elseif ($project_count == 0): ?>
         <?php include_component('main/hideableInfoBoxModal', array('key' => 'index_no_projects', 'title' => __('Get started using The Bug Genie'), 'template' => 'main/intro_index_no_projects')); ?>
     <?php endif; ?>
-</div>
 <?php endif; ?>
 
 <div class="main-wrapper">

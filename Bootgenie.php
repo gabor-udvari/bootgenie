@@ -30,6 +30,48 @@
 
         protected $debug = false;
 
+        protected function _initialize()
+        {
+            define('BOOTGENIE_PATH', THEBUGGENIE_PATH . 'modules/bootgenie/');
+
+            // Add override rules
+            self::addOverride('main/index', 'bootgenie/main_index', 'action');
+            self::addOverride('main/menulinks', 'bootgenie/main_menulinks', 'component');
+
+            self::addOverride('publish/showarticle', 'bootgenie/publish_showarticle', 'action');
+            self::addOverride('publish/specialarticle', 'bootgenie/publish_specialarticle', 'action');
+            self::addOverride('publish/articledisplay', 'bootgenie/publish_articledisplay', 'component');
+            self::addOverride('publish/menustriplinks', 'bootgenie/publish_menustriplinks', 'component');
+            self::addOverride('publish/whatlinkshere', 'bootgenie/publish_whatlinkshere', 'component');
+            self::addOverride('publish/tools', 'bootgenie/publish_tools', 'component');
+            self::addOverride('publish/latestArticles', 'bootgenie/publish_latestArticles', 'component');
+
+            // Disable for testing
+            // $this->_enabled = false;
+        }
+
+        protected function _addListeners()
+        {
+            if ( $this->_enabled == true ) {
+                // listen for renderTemplate (overwrite module action templates)
+                framework\Event::listen('core', 'self::performAction::renderTemplate', array($this, 'listen_renderTemplate'));
+                // listen for renderBegins (overwrite layout and components)
+                framework\Event::listen('core', '\thebuggenie\core\framework\Context::renderBegins', array($this, 'listen_renderBegins'));
+            }
+        }
+
+        protected function _install($scope)
+        {
+        }
+
+        protected function _loadFixtures($scope)
+        {
+        }
+
+        protected function _uninstall()
+        {
+        }
+
         /**
          * Return an instance of this module
          *
@@ -83,49 +125,6 @@
                 $return_array[$key] = ['class'=>$class, 'action'=>$action, 'template'=>$value];
             }
             return $return_array;
-        }
-
-        protected function _initialize()
-        {
-            define('BOOTGENIE_PATH', THEBUGGENIE_PATH . 'modules/bootgenie/');
-
-            // Add override rules
-            self::addOverride('main/index', 'bootgenie/main_index', 'action');
-            self::addOverride('main/menulinks', 'bootgenie/main_menulinks', 'component');
-
-            self::addOverride('publish/showarticle', 'bootgenie/publish_showarticle', 'action');
-            self::addOverride('publish/specialarticle', 'bootgenie/publish_specialarticle', 'action');
-            self::addOverride('publish/articledisplay', 'bootgenie/publish_articledisplay', 'component');
-            self::addOverride('publish/menustriplinks', 'bootgenie/publish_menustriplinks', 'component');
-            self::addOverride('publish/whatlinkshere', 'bootgenie/publish_whatlinkshere', 'component');
-            self::addOverride('publish/tools', 'bootgenie/publish_tools', 'component');
-            self::addOverride('publish/latestArticles', 'bootgenie/publish_latestArticles', 'component');
-
-            // Disable for testing
-            // $this->_enabled = false;
-            $this->debug = true;
-        }
-
-        protected function _addListeners()
-        {
-            if ( $this->_enabled == true ) {
-                // listen for renderTemplate (overwrite module action templates)
-                framework\Event::listen('core', 'self::performAction::renderTemplate', array($this, 'listen_renderTemplate'));
-                // listen for renderBegins (overwrite layout and components)
-                framework\Event::listen('core', '\thebuggenie\core\framework\Context::renderBegins', array($this, 'listen_renderBegins'));
-            }
-        }
-
-        protected function _install($scope)
-        {
-        }
-
-        protected function _loadFixtures($scope)
-        {
-        }
-
-        protected function _uninstall()
-        {
         }
 
         /**
