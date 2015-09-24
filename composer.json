@@ -12,6 +12,9 @@
     "require-dev": {
         "codegyre/robo": ">=0.5.4",
         "fxp/composer-asset-plugin": "~1.0",
+        "composer/composer": "~1.0@dev",
+        "patchwork/jsqueeze": "~2.0",
+        "leafo/scssphp": "~0.3",
         "bower-asset/jquery": "1.11.*",
         "bower-asset/bootstrap-sass-official": "~3.3",
         "bower-asset/yamm3": "~1.1"

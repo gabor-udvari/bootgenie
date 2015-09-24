@@ -18,9 +18,9 @@
 // Breadcrumb
 
 .breadcrumb li a {
-  height: @input-height-base;
-  line-height: @line-height-base;
-  padding: @padding-base-vertical 0;
+  height: $input-height-base;
+  line-height: $line-height-base;
+  padding: $padding-base-vertical 0;
   display: inline-block;
 }
 
@@ -33,19 +33,19 @@
 // Layout
 
 .main-wrapper {
-  .make-row();
+  @include make-row();
 }
 
 .main-wrapper .sidebar {
-  .make-lg-column(4);
-  .make-md-column(4);
-  .make-sm-column(4);
+  @include make-lg-column(4);
+  @include make-md-column(4);
+  @include make-sm-column(4);
 }
 
 .main-wrapper .main {
-  .make-lg-column(8);
-  .make-md-column(8);
-  .make-sm-column(8);
+  @include make-lg-column(8);
+  @include make-md-column(8);
+  @include make-sm-column(8);
 }
 
 // Main
@@ -57,7 +57,7 @@
 // Page footer
 footer {
   margin-top: 15px;
-  border-top: 1px solid @gray-lighter;
+  border-top: 1px solid $gray-lighter;
 }
 
 footer .container {

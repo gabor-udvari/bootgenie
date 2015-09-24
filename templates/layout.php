@@ -124,6 +124,6 @@
         <?php endif; ?>
         <!-- Bootstrap -->
         <script src="/public/js/jquery-2.1.3.min.js"></script>
-        <script src="/modules/bootgenie/assets/scripts/bootstrap.min.js"></script>
+        <script src="/modules/bootgenie/assets/scripts/bootstrap.js"></script>
     </body>
 </html>
