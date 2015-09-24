@@ -23,7 +23,7 @@
             <link rel="stylesheet" href="<?php echo $css; ?>">
         <?php endforeach; ?>
 
-        <link href="<?php echo '/modules/bootgenie/assets/css/bootgenie.css'; ?>" rel="stylesheet">
+        <link href="<?php echo '/modules/bootgenie/assets/styles/bootgenie.css'; ?>" rel="stylesheet">
 
         <?php if (false) : ?>
         <script>
@@ -124,6 +124,6 @@
         <?php endif; ?>
         <!-- Bootstrap -->
         <script src="/public/js/jquery-2.1.3.min.js"></script>
-        <script src="/modules/bootgenie/assets/js/bootstrap.min.js"></script>
+        <script src="/modules/bootgenie/assets/scripts/bootstrap.min.js"></script>
     </body>
 </html>
