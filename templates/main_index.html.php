@@ -54,3 +54,4 @@
         <?php endif; ?>
         <?php \thebuggenie\core\framework\Event::createNew('core', 'index_right_bottom')->trigger(); ?>
 </section> <!-- /.main -->
+</div> <!-- /.main-wrapper -->
