@@ -137,8 +137,10 @@ class RoboFile extends \Robo\Tasks
     $this->taskWatch()
       ->monitor('assets/styles/main.scss', function() {
         $this->styles();
+      })
       ->monitor('assets/styles/bootgenie.scss', function() {
         $this->styles();
-      })->run();
+      })
+      ->run();
   }
 }

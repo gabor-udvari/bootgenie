@@ -32,17 +32,21 @@
 
 // Layout
 
-.main-wrapper {
+#content_container {
+  @extend .container;
+}
+
+.content-wrapper {
   @include make-row();
 }
 
-.main-wrapper .sidebar {
+.content-wrapper .sidebar {
   @include make-lg-column(4);
   @include make-md-column(4);
   @include make-sm-column(4);
 }
 
-.main-wrapper .main {
+.content-wrapper .main {
   @include make-lg-column(8);
   @include make-md-column(8);
   @include make-sm-column(8);

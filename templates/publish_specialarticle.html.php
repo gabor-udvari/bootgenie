@@ -6,7 +6,6 @@
 
 ?>
 
-<div class="main-wrapper">
 <aside class="sidebar">
     <?php include_component('leftmenu', compact('article', 'special')); ?>
 </aside>

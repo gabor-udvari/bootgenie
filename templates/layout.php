@@ -38,10 +38,12 @@
                 <?php require_once BOOTGENIE_PATH . 'templates/header.inc.php'; ?>
                 <?php \thebuggenie\core\framework\Logging::log('done (rendering header)'); ?>
             </header>
-            <div id="content_container" class="container">
+            <div id="content_container">
+                <div class="content-wrapper">
                 <?php \thebuggenie\core\framework\Logging::log('Rendering content'); ?>
                 <?php echo $content; ?>
                 <?php \thebuggenie\core\framework\Logging::log('done (rendering content)'); ?>
+                </div> <!-- /.content-wrapper -->
             </div> <!-- /#content_container -->
             <footer>
                 <?php \thebuggenie\core\framework\Event::createNew('core', 'layout.php::footer-begins')->trigger(); ?>

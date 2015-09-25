@@ -5,7 +5,6 @@
     $tbg_response->setTitle($article_name);
 ?>
 
-<div class="main-wrapper">
 <aside class="sidebar <?php if ($article->getArticleType() == \thebuggenie\modules\publish\entities\Article::TYPE_MANUAL) echo 'manual'; ?>">
             <?php if ($article->getArticleType() == \thebuggenie\modules\publish\entities\Article::TYPE_MANUAL): ?>
                 <?php include_component('manualsidebar', array('article' => $article)); ?>

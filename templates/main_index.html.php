@@ -12,7 +12,6 @@
     <?php endif; ?>
 <?php endif; ?>
 
-<div class="main-wrapper">
 <aside class="sidebar">
         <?php include_component('main/menulinks', array('links' => $links, 'target_type' => 'main_menu', 'target_id' => 0, 'title' => __('Quick links'))); ?>
         <?php \thebuggenie\core\framework\Event::createNew('core', 'index_left')->trigger(); ?>
@@ -54,4 +53,3 @@
         <?php endif; ?>
         <?php \thebuggenie\core\framework\Event::createNew('core', 'index_right_bottom')->trigger(); ?>
 </section> <!-- /.main -->
-</div> <!-- /.main-wrapper -->
