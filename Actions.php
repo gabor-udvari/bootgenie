@@ -1,18 +1,18 @@
 <?php
 
-    namespace thebuggenie\modules\bootgenie;
+namespace thebuggenie\modules\bootgenie;
 
-    use thebuggenie\core\framework;
+use thebuggenie\core\framework;
 
-    /**
-     * actions for the bootgenie module
-     */
-    class Actions extends framework\Action
+/**
+ * actions for the bootgenie module
+ */
+class Actions extends framework\Action
+{
+
+    public function runIndex(framework\Request $request)
     {
-
-        public function runIndex(framework\Request $request)
-        {
-        }
-
     }
+
+}
 

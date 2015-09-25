@@ -1,14 +1,13 @@
 <?php
 
-    namespace thebuggenie\modules\bootgenie;
+namespace thebuggenie\modules\bootgenie;
 
-    use thebuggenie\core\framework;
+use thebuggenie\core\framework;
 
-    /**
-     * actions for the bootgenie module
-     */
-    class Components extends framework\ActionComponent
-    {
+/**
+ * actions for the bootgenie module
+ */
+class Components extends framework\ActionComponent
+{
 
-    }
-
+}
