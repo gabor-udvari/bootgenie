@@ -20,6 +20,24 @@ A [Bootstrap](http://getbootstrap.com/) theme for [The Bug Genie](https://github
 - Enrichment:
    - Add back dynamic JavaScript features
 
+## Development
+
+Fork the repository on Github and clone that or just the original:
+```
+git clone git@github.com:gabor-udvari/bootgenie.git
+```
+
+Step into the directory and install the dependencies with [Composer](https://getcomposer.org/):
+```
+cd bootgenie
+composer install
+```
+
+Composer will install everything you need, even the assets. After that you can use [Robo](http://robo.li/) to build the assets:
+```
+vendor/bin/robo build
+```
+
 ## Why a module and not a theme?
 The Bug Genie has a lot more powerful support for modules than themes. Modules support version numbering, install, upgrade, uninstall hooks and a lot more.
 
