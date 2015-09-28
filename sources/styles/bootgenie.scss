@@ -67,3 +67,9 @@ footer {
 footer .container {
   padding-top: 15px;
 }
+
+.page-footer-content {
+  @include make-lg-column(12);
+  @include make-md-column(12);
+  @include make-sm-column(12);
+}
