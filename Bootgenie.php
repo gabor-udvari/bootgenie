@@ -28,7 +28,7 @@ class Bootgenie extends \thebuggenie\core\entities\Module
 
     protected $_overridemap = ['components'=>[], 'actions'=>[]];
 
-    protected $debug = false;
+    protected $debug = true;
 
     protected function _initialize()
     {
@@ -39,8 +39,10 @@ class Bootgenie extends \thebuggenie\core\entities\Module
         self::addOverride('main/menulinks', 'bootgenie/main_menulinks', 'component');
 
         self::addOverride('publish/showarticle', 'bootgenie/publish_showarticle', 'action');
+        // self::addOverride('publish/showarticle', 'bootgenie/publish/showarticle', 'action');
         self::addOverride('publish/specialarticle', 'bootgenie/publish_specialarticle', 'action');
         self::addOverride('publish/articledisplay', 'bootgenie/publish_articledisplay', 'component');
+        // self::addOverride('publish/articledisplay', 'bootgenie/publish/articledisplay', 'component');
         self::addOverride('publish/menustriplinks', 'bootgenie/publish_menustriplinks', 'component');
         self::addOverride('publish/whatlinkshere', 'bootgenie/publish_whatlinkshere', 'component');
         self::addOverride('publish/tools', 'bootgenie/publish_tools', 'component');
@@ -106,7 +108,10 @@ class Bootgenie extends \thebuggenie\core\entities\Module
     {
         $return_array = [];
         foreach($this->_overridemap['components'] as $key=>$value){
-            list($module, $method) = explode('/', $value);
+            // enable multiple / separators for components
+            $a = explode('/', $value);
+            $module = array_shift($a);
+            $method = implode('/', $a);
             $return_array[$key] = ['module'=>$module, 'method'=>$method];
         }
         return $return_array;
