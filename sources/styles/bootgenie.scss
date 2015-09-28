@@ -1,11 +1,8 @@
 // Bootgenie specific style definitions
 
 // Page header
-.logo, .logo_name {
+.navbar-brand img {
   float: left;
-}
-
-.logo_name {
   margin-right: 15px;
 }
 
@@ -13,6 +10,17 @@
 .nav li img {
   float: left;
   margin-right: 5px;
+}
+
+#main-menu {
+  @extend .nav;
+  @extend .navbar-nav;
+}
+
+#user-menu {
+  @extend .nav;
+  @extend .navbar-nav;
+  @extend .navbar-right;
 }
 
 // Breadcrumb
