@@ -2,7 +2,7 @@
     <?php if (!isset($wiki_url)): ?>
         <a href="<?php echo ((isset($project_url)) ? $project_url : $url); ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo image_tag('tab_publish.png', array(), false, 'publish'); ?> <?php echo \thebuggenie\core\framework\Context::getModule('publish')->getMenuTitle(); ?> <span class="caret"></span></a>
     <?php else: ?>
-        <?php echo link_tag($wiki_url, \thebuggenie\core\framework\Context::getModule('publish')->getMenuTitle(), array('target' => 'blank')) ?>
+        <?php echo link_tag($wiki_url, image_tag('tab_publish.png', array(), false, 'publish') .' '. \thebuggenie\core\framework\Context::getModule('publish')->getMenuTitle(), array('target' => 'blank')) ?>
     <?php endif; ?>
 
     <?php if (count(\thebuggenie\core\entities\Project::getAll())): ?>
@@ -12,11 +12,10 @@
         <?php if (\thebuggenie\core\framework\Context::isProjectContext()): ?>
             <h3><?php echo \thebuggenie\core\framework\Context::getCurrentProject()->getName(); ?></h3>
             <?php if (!isset($wiki_url)): ?>
-                <?php echo link_tag($project_url, __('Project wiki frontpage')); ?>
-                <?php $quicksearch_title = __('Find project article (press enter to search)'); ?>
+                <?php echo link_tag($project_url, image_tag('tab_publish.png', array(), false, 'publish') .' '.__('Project wiki frontpage')); ?>
                 <form action="<?php echo make_url('publish_find_project_articles', array('project_key' => \thebuggenie\core\framework\Context::getCurrentProject()->getKey())); ?>" method="get" accept-charset="<?php echo \thebuggenie\core\framework\Context::getI18n()->getCharset(); ?>">
                     <div class="form-group">
-                        <input type="search" name="articlename" placeholder="<?php echo $quicksearch_title; ?>" class="form-control">
+                        <input type="search" name="articlename" placeholder="<?php echo __('Find project article (press enter to search)'); ?>" class="form-control">
                     </div>
                 </form>
             <?php else: ?>
@@ -24,11 +23,10 @@
             <?php endif; ?>
         <?php endif; ?>
             <h3><?php echo __('Global content'); ?></h3>
-            <p><?php echo link_tag($url, \thebuggenie\core\framework\Context::getModule('publish')->getMenuTitle(false)); ?></p>
-            <?php $quicksearch_title = __('Find any article (press enter to search)'); ?>
+            <p><a href="<?php echo $url; ?>"><?php echo image_tag('tab_publish.png', array(), false, 'publish'); ?> <?php echo \thebuggenie\core\framework\Context::getModule('publish')->getMenuTitle(false); ?></a></p>
             <form action="<?php echo make_url('publish_find_articles'); ?>" method="get" accept-charset="<?php echo \thebuggenie\core\framework\Context::getI18n()->getCharset(); ?>">
                 <div class="form-group">
-                    <input type="search" name="articlename" placeholder="<?php echo $quicksearch_title; ?>" class="form-control">
+                    <input type="search" name="articlename" placeholder="<?php echo __('Find any article (press enter to search)'); ?>" class="form-control">
                 </div>
             </form>
         <?php if (count(\thebuggenie\core\entities\Project::getAll()) > (int) \thebuggenie\core\framework\Context::isProjectContext()): ?>
@@ -41,9 +39,9 @@
                     endif;
                 ?>
                 <?php if (!$project->hasWikiURL()): ?>
-                    <?php echo link_tag(make_url('publish_article', array('article_name' => ucfirst($project->getKey()).':MainPage')), $project->getName()); ?>
+                    <?php echo link_tag(make_url('publish_article', array('article_name' => ucfirst($project->getKey()).':MainPage')), image_tag('tab_publish.png', array(), false, 'publish') .' '. $project->getName()); ?>
                 <?php else: ?>
-                    <?php echo link_tag($project->getWikiURL(), $project->getName(), array('target' => 'blank')) ?>
+                    <?php echo link_tag($project->getWikiURL(), image_tag('tab_publish.png', array(), false, 'publish') .' '. $project->getName(), array('target' => 'blank')) ?>
                 <?php endif; ?>
             <?php endforeach; ?>
         <?php endif; ?>

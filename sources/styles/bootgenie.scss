@@ -25,6 +25,11 @@
   @extend .yamm;
 }
 
+.dropdown-menu {
+  // form labels need to fit
+  min-width: 350px;
+}
+
 // Override yamm-content padding
 .yamm-content,
 .yamm .yamm-content {
