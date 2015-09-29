@@ -28,7 +28,7 @@ class Bootgenie extends \thebuggenie\core\entities\Module
 
     protected $_overridemap = ['components'=>[], 'actions'=>[]];
 
-    protected $debug = true;
+    protected $debug = false;
 
     protected function _initialize()
     {

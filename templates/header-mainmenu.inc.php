@@ -10,11 +10,10 @@ use thebuggenie\core\framework;
         </li>
     <?php elseif (framework\Context::isProjectContext()): ?>
         <?php $page = (in_array($tbg_response->getPage(), array('project_dashboard', 'project_scrum_sprint_details', 'project_timeline', 'project_team', 'project_roadmap', 'project_statistics', 'vcs_commitspage'))) ? $tbg_response->getPage() : 'project_dashboard'; ?>
-        <li <?php if (in_array($tbg_response->getPage(), array('project_dashboard', 'project_scrum_sprint_details', 'project_timeline', 'project_team', 'project_roadmap', 'project_statistics', 'vcs_commitspage'))): ?>class="active"<?php endif; ?> class="dropdown">
+        <li class="dropdown <?php if (in_array($tbg_response->getPage(), array('project_dashboard', 'project_scrum_sprint_details', 'project_timeline', 'project_team', 'project_roadmap', 'project_statistics', 'vcs_commitspage'))): ?>active<?php endif; ?>">
             <a href="<?php echo make_url($page, array('project_key' => framework\Context::getCurrentProject()->getKey())); ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo image_tag('icon_dashboard_small.png') . tbg_get_pagename($tbg_response->getPage()); ?></a>
             <ul class="dropdown-menu">
             <li>
-                <?php // echo javascript_link_tag(image_tag('tabmenu_dropdown.png', array('class' => 'menu_dropdown'))); ?>
                 <div id="project_information_menu" class="tab_menu_dropdown yamm-content">
                     <?php include_component('project/projectinfolinks', array('submenu' => true)); ?>
                 </div>
@@ -102,6 +101,7 @@ use thebuggenie\core\framework;
 
     <?php framework\Event::createNew('core', 'templates/headermainmenu::projectmenulinks', framework\Context::getCurrentProject())->trigger(); ?>
 </ul>
+
 <?php if (framework\Context::isProjectContext() && !framework\Context::getCurrentProject()->isArchived() && !framework\Context::getCurrentProject()->isLocked() && ($tbg_user->canReportIssues() || $tbg_user->canReportIssues(framework\Context::getCurrentProject()->getID()))): ?>
     <div class="reportissue_button_container">
     <?php echo javascript_link_tag(image_tag('icon-mono-add.png') . __('Report an issue'), array('onclick' => "TBG.Main.Helpers.Backdrop.show('" . make_url('get_partial_for_backdrop', array('key' => 'reportissue', 'project_id' => framework\Context::getCurrentProject()->getId())) . "');", 'class' => 'button button-lightblue')); ?>
