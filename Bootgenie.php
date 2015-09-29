@@ -48,6 +48,9 @@ class Bootgenie extends \thebuggenie\core\entities\Module
         self::addOverride('publish/tools', 'bootgenie/publish_tools', 'component');
         self::addOverride('publish/latestArticles', 'bootgenie/publish_latestArticles', 'component');
 
+        self::addOverride('project/projectinfolinks', 'bootgenie/project_projectinfolinks', 'component');
+        self::addOverride('agile/headermenuprojectlinks', 'bootgenie/agile_headermenuprojectlinks', 'component');
+
         // Disable for testing
         // $this->_enabled = false;
     }

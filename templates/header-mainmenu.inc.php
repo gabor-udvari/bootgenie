@@ -11,10 +11,10 @@ use thebuggenie\core\framework;
     <?php elseif (framework\Context::isProjectContext()): ?>
         <?php $page = (in_array($tbg_response->getPage(), array('project_dashboard', 'project_scrum_sprint_details', 'project_timeline', 'project_team', 'project_roadmap', 'project_statistics', 'vcs_commitspage'))) ? $tbg_response->getPage() : 'project_dashboard'; ?>
         <li class="dropdown <?php if (in_array($tbg_response->getPage(), array('project_dashboard', 'project_scrum_sprint_details', 'project_timeline', 'project_team', 'project_roadmap', 'project_statistics', 'vcs_commitspage'))): ?>active<?php endif; ?>">
-            <a href="<?php echo make_url($page, array('project_key' => framework\Context::getCurrentProject()->getKey())); ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo image_tag('icon_dashboard_small.png') . tbg_get_pagename($tbg_response->getPage()); ?></a>
+            <a href="<?php echo make_url($page, array('project_key' => framework\Context::getCurrentProject()->getKey())); ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo image_tag('icon_dashboard_small.png') . tbg_get_pagename($tbg_response->getPage()); ?> <span class="caret"></span></a>
             <ul class="dropdown-menu">
             <li>
-                <div id="project_information_menu" class="tab_menu_dropdown yamm-content">
+                <div id="project_information_menu">
                     <?php include_component('project/projectinfolinks', array('submenu' => true)); ?>
                 </div>
             </li>
@@ -34,10 +34,12 @@ use thebuggenie\core\framework;
     <?php endif; ?>
 
     <?php if (framework\Context::isProjectContext() && $tbg_user->canSearchForIssues()): ?>
-        <li<?php if (in_array($tbg_response->getPage(), array('project_issues', 'viewissue'))): ?> class="active"<?php endif; ?>>
-            <?php echo link_tag(make_url('project_issues', array('project_key' => framework\Context::getCurrentProject()->getKey())), image_tag('tab_search.png') . __('Issues')); ?>
+        <li class="dropdown <?php if (in_array($tbg_response->getPage(), array('project_issues', 'viewissue'))): ?>active<?php endif; ?>">
+            <a href="<?php echo make_url('project_issues', array('project_key' => framework\Context::getCurrentProject()->getKey())); ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo image_tag('tab_search.png') . __('Issues'); ?><span class="caret"></span></a>
             <?php if (framework\Context::isProjectContext()): ?>
             <?php endif; ?>
+            <ul class="dropdown-menu">
+                <li><div>
                 <?php echo link_tag(make_url('project_open_issues', array('project_key' => framework\Context::getCurrentProject()->getKey())), image_tag('icon_savedsearch.png') . __('Open issues for this project')); ?>
                 <?php echo link_tag(make_url('project_closed_issues', array('project_key' => framework\Context::getCurrentProject()->getKey())), image_tag('icon_savedsearch.png') . __('Closed issues for this project')); ?>
                 <?php echo link_tag(make_url('project_wishlist_issues', array('project_key' => framework\Context::getCurrentProject()->getKey())), image_tag('icon_savedsearch.png') . __('Wishlist for this project')); ?>
@@ -45,7 +47,7 @@ use thebuggenie\core\framework;
                 <?php echo link_tag(make_url('project_most_voted_issues', array('project_key' => framework\Context::getCurrentProject()->getKey())), image_tag('icon_savedsearch.png') . __('Most voted for issues')); ?>
                 <?php echo link_tag(make_url('project_month_issues', array('project_key' => framework\Context::getCurrentProject()->getKey())), image_tag('icon_savedsearch.png') . __('Issues reported this month')); ?>
                 <?php echo link_tag(make_url('project_last_issues', array('project_key' => framework\Context::getCurrentProject()->getKey(), 'units' => 30, 'time_unit' => 'days')), image_tag('icon_savedsearch.png') . __('Issues reported last 30 days')); ?>
-                <div class="header"><?php echo __('Recently watched issues'); ?></div>
+                <h3><?php echo __('Recently watched issues'); ?></h3>
                 <?php if (array_key_exists('viewissue_list', $_SESSION) && is_array($_SESSION['viewissue_list'])): ?>
                     <?php foreach ($_SESSION['viewissue_list'] as $k => $i_id): ?>
                         <?php
@@ -69,7 +71,8 @@ use thebuggenie\core\framework;
                 <?php if (!isset($an_issue)): ?>
                     <a href="javascript:void(0);"><?php echo __('No recent issues'); ?></a>
                 <?php endif; ?>
-            </div>
+            </div></li>
+            </ul>
         </li>
     <?php endif; ?>
 
@@ -100,10 +103,10 @@ use thebuggenie\core\framework;
     <?php endif; ?>
 
     <?php framework\Event::createNew('core', 'templates/headermainmenu::projectmenulinks', framework\Context::getCurrentProject())->trigger(); ?>
-</ul>
 
-<?php if (framework\Context::isProjectContext() && !framework\Context::getCurrentProject()->isArchived() && !framework\Context::getCurrentProject()->isLocked() && ($tbg_user->canReportIssues() || $tbg_user->canReportIssues(framework\Context::getCurrentProject()->getID()))): ?>
-    <div class="reportissue_button_container">
-    <?php echo javascript_link_tag(image_tag('icon-mono-add.png') . __('Report an issue'), array('onclick' => "TBG.Main.Helpers.Backdrop.show('" . make_url('get_partial_for_backdrop', array('key' => 'reportissue', 'project_id' => framework\Context::getCurrentProject()->getId())) . "');", 'class' => 'button button-lightblue')); ?>
-    </div>
-<?php endif; ?>
+    <?php if (framework\Context::isProjectContext() && !framework\Context::getCurrentProject()->isArchived() && !framework\Context::getCurrentProject()->isLocked() && ($tbg_user->canReportIssues() || $tbg_user->canReportIssues(framework\Context::getCurrentProject()->getID()))): ?>
+        <li>
+            <?php echo javascript_link_tag(image_tag('icon-mono-add.png') . __('Report an issue'), array('onclick' => "TBG.Main.Helpers.Backdrop.show('" . make_url('get_partial_for_backdrop', array('key' => 'reportissue', 'project_id' => framework\Context::getCurrentProject()->getId())) . "');", 'class' => 'button button-lightblue')); ?>
+        </li>
+    <?php endif; ?>
+</ul>
