@@ -20,6 +20,10 @@ A [Bootstrap](http://getbootstrap.com/) theme for [The Bug Genie](https://github
 - Enrichment:
    - Add back dynamic JavaScript features
 
+## Documentation
+
+The documentation is available as a [Github Wiki](https://github.com/gabor-udvari/bootgenie/wiki) and it is also shipped with the module as Asciidoc files in the `docs` folder. If you used git do download the sources the `docs` is a git submodule.
+
 ## Development
 
 Fork the repository on Github and clone that or just the original:
