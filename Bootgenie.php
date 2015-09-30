@@ -35,21 +35,24 @@ class Bootgenie extends \thebuggenie\core\entities\Module
         define('BOOTGENIE_PATH', THEBUGGENIE_PATH . 'modules/bootgenie/');
 
         // Add override rules
-        self::addOverride('main/index', 'bootgenie/main_index', 'action');
-        self::addOverride('main/menulinks', 'bootgenie/main_menulinks', 'component');
+        $this->addOverride('main/index', 'bootgenie/main_index', 'action');
+        $this->addOverride('main/login', 'bootgenie/main_login', 'action');
+        $this->addOverride('main/loginregister', 'bootgenie/main_loginregister', 'component');
+        $this->addOverride('main/login', 'bootgenie/main_login', 'component');
+        $this->addOverride('main/menulinks', 'bootgenie/main_menulinks', 'component');
 
-        self::addOverride('publish/showarticle', 'bootgenie/publish_showarticle', 'action');
-        // self::addOverride('publish/showarticle', 'bootgenie/publish/showarticle', 'action');
-        self::addOverride('publish/specialarticle', 'bootgenie/publish_specialarticle', 'action');
-        self::addOverride('publish/articledisplay', 'bootgenie/publish_articledisplay', 'component');
-        // self::addOverride('publish/articledisplay', 'bootgenie/publish/articledisplay', 'component');
-        self::addOverride('publish/menustriplinks', 'bootgenie/publish_menustriplinks', 'component');
-        self::addOverride('publish/whatlinkshere', 'bootgenie/publish_whatlinkshere', 'component');
-        self::addOverride('publish/tools', 'bootgenie/publish_tools', 'component');
-        self::addOverride('publish/latestArticles', 'bootgenie/publish_latestArticles', 'component');
+        $this->addOverride('publish/showarticle', 'bootgenie/publish_showarticle', 'action');
+        // $this->addOverride('publish/showarticle', 'bootgenie/publish/showarticle', 'action');
+        $this->addOverride('publish/specialarticle', 'bootgenie/publish_specialarticle', 'action');
+        $this->addOverride('publish/articledisplay', 'bootgenie/publish_articledisplay', 'component');
+        // $this->addOverride('publish/articledisplay', 'bootgenie/publish/articledisplay', 'component');
+        $this->addOverride('publish/menustriplinks', 'bootgenie/publish_menustriplinks', 'component');
+        $this->addOverride('publish/whatlinkshere', 'bootgenie/publish_whatlinkshere', 'component');
+        $this->addOverride('publish/tools', 'bootgenie/publish_tools', 'component');
+        $this->addOverride('publish/latestArticles', 'bootgenie/publish_latestArticles', 'component');
 
-        self::addOverride('project/projectinfolinks', 'bootgenie/project_projectinfolinks', 'component');
-        self::addOverride('agile/headermenuprojectlinks', 'bootgenie/agile_headermenuprojectlinks', 'component');
+        $this->addOverride('project/projectinfolinks', 'bootgenie/project_projectinfolinks', 'component');
+        $this->addOverride('agile/headermenuprojectlinks', 'bootgenie/agile_headermenuprojectlinks', 'component');
 
         // Disable for testing
         // $this->_enabled = false;
@@ -145,10 +148,10 @@ class Bootgenie extends \thebuggenie\core\entities\Module
     public function listen_renderTemplate(framework\Event $event)
     {
         // set override map for components
-        framework\Context::getRouting()->setComponentOverrideMap( self::getComponentOverrideMap() );
+        framework\Context::getRouting()->setComponentOverrideMap( $this->getComponentOverrideMap() );
 
         // set override map for actions
-        $actionmap = self::getActionOverrideMap();
+        $actionmap = $this->getActionOverrideMap();
         $template = framework\Context::getResponse()->getTemplate();
         foreach( $actionmap as $value){
             if ( stripos($event->getParameter('class'), $value['class']) !== FALSE && stripos($template, $value['action']) !== FALSE) {
@@ -156,7 +159,6 @@ class Bootgenie extends \thebuggenie\core\entities\Module
             }
         }
         $event->setProcessed();
-        // $event->setReturnValue(''); // not needed
     }
 
     public function listen_renderBegins(framework\Event $event)
