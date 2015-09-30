@@ -10,4 +10,19 @@ use thebuggenie\core\framework;
 class Components extends framework\ActionComponent
 {
 
+    private function copyVars($from)
+    {
+        foreach(get_object_vars($from) as $name => $value) {
+            $this->$name = $value;
+        }
+    }
+
+    // $actionToRunName = 'component' . ucfirst($module_file['file']);
+    public function componentMain_login()
+    {
+        $actionClass = new \thebuggenie\core\modules\main\Components();
+        $actionClass->componentLogin();
+
+        $this->copyVars($actionClass);
+    }
 }

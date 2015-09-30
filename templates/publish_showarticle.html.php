@@ -81,8 +81,10 @@
 </section> <!-- /.main -->
 
 <?php else: ?>
-    <div class="redbox" id="notfound_error">
-        <div class="header"><?php echo __("This article can not be displayed"); ?></div>
-        <div class="content"><?php echo __("This article either does not exist, has been deleted or you do not have permission to view it."); ?></div>
+<section class="main-fullwidth">
+    <div class="alert alert-danger" id="notfound_error">
+        <h3><?php echo __("This article can not be displayed"); ?></h3>
+        <p><?php echo __("This article either does not exist, has been deleted or you do not have permission to view it."); ?></p>
     </div>
+</section>
 <?php endif; ?>

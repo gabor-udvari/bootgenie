@@ -106,10 +106,25 @@
   @include make-sm-column(8);
 }
 
+.content-wrapper .main-fullwidth {
+  @include make-lg-column(12);
+  @include make-md-column(12);
+  @include make-sm-column(12);
+}
+
 // Main
 
 .list-group-item img {
   margin-right: 5px;
+}
+
+.alert h1, .alert .h1,
+.alert h2, .alert .h2,
+.alert h3, .alert .h3,
+.alert h4, .alert .h4, 
+.alert h5, .alert .h5,
+.alert h6, .alert .h6 {
+  margin-top: 0;
 }
 
 // Page footer
