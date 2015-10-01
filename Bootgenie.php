@@ -57,7 +57,7 @@ class Bootgenie extends \thebuggenie\core\entities\Module
         $this->addOverride('agile/headermenuprojectlinks', 'bootgenie/agile_headermenuprojectlinks', 'component');
 
         // Disable for testing
-        $this->_enabled = false;
+        // $this->_enabled = false;
     }
 
     protected function _addListeners()
