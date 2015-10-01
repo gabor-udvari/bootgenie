@@ -127,6 +127,67 @@
   margin-top: 0;
 }
 
+// Login
+
+#regular_login_container {
+  @include make-md-column-offset(1);
+  @include make-md-column(4);
+  box-sizing: content-box;
+  padding-right: 8.3333%; // same as one column + gutter
+  border-right: 1px solid $gray-lighter;
+}
+#registration-button-container {
+  @include make-md-column-offset(1);
+  @include make-md-column(4);
+}
+
+/**
+ * Forms
+ * 
+ * Make all the forms horizontal by default
+ */
+
+form {
+  @extend .form-horizontal;
+}
+
+label {
+  @extend .control-label;
+  @include make-sm-column(3);
+}
+
+input[type="text"], input[type="password"],
+input[type="email"] {
+  @extend .form-control;
+}
+
+.control-wrapper {
+  @include make-sm-column(8);
+}
+
+.checkbox-wrapper {
+  @include make-sm-column-offset(3);
+  @include make-sm-column(8);
+
+  label {
+    @include make-sm-column(8);
+    // repeat this here
+    padding-left: 20px;
+    text-align: left;
+  }
+}
+
+.button-wrapper {
+  @include make-sm-column-offset(3);
+  @include make-sm-column(8);
+}
+
+.captcha-wrapper {
+  @include make-sm-column-offset(3);
+  @include make-sm-column(8);
+  margin-bottom: 5px;
+}
+
 // Page footer
 footer {
   margin-top: 15px;

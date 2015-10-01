@@ -25,4 +25,12 @@ class Components extends framework\ActionComponent
 
         $this->copyVars($actionClass);
     }
+
+    public function componentMain_openidbuttons()
+    {
+        $actionClass = new \thebuggenie\core\modules\main\Components();
+        $actionClass->componentOpenidButtons();
+
+        $this->copyVars($actionClass);
+    }
 }

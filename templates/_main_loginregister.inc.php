@@ -1,4 +1,4 @@
-<div id="register" class="logindiv regular">
+<div id="registration-button-container">
     <?php if (\thebuggenie\core\framework\Settings::isUsingExternalAuthenticationBackend()): ?>
         <?php echo tbg_parse_text(\thebuggenie\core\framework\Settings::get('register_message'), false, null, array('embedded' => true)); ?>
     <?php else: ?>
@@ -6,38 +6,40 @@
             <?php include_component('publish/articledisplay', array('article' => $registrationintro, 'show_title' => false, 'show_details' => false, 'show_actions' => false, 'embedded' => true)); ?>
         <?php endif; ?>
 
-        <div id="register_container">
-            <h2><?php echo __('Create an account'); ?></h2>
-            <form accept-charset="<?php echo \thebuggenie\core\framework\Context::getI18n()->getCharset(); ?>" action="<?php echo make_url('register'); ?>" method="post" id="register_form" onsubmit="TBG.Main.Login.register('<?php echo make_url('register'); ?>'); return false;">
-                <ul class="login_formlist">
-                    <li>
-                        <label for="fieldusername">*&nbsp;<?php echo __('Username'); ?></label>
-                        <input type="text" class="required" id="fieldusername" name="fieldusername" onblur="TBG.Main.Login.checkUsernameAvailability('<?php echo make_url('register_check_username'); ?>');">
-                        <div class="error_message"><?php echo __('This username is invalid or in use'); ?></div>
-                        <?php echo image_tag('spinning_20.gif', array('id' => 'username_check_indicator', 'style' => 'display: none;')); ?>
-                    </li>
-                    <li>
-                        <label for="buddyname">*&nbsp;<?php echo __('Nickname'); ?></label>
-                        <input type="text" class="required" id="buddyname" name="buddyname">
-                    </li>
-                    <li class="faded_out">
-                        <?php echo __('The "nickname" will be shown to other users'); ?>
-                    </li>
-                    <li>
-                        <label for="email_address">*&nbsp;<?php echo __('E-mail address'); ?></label>
-                        <input type="email" class="required" id="email_address" name="email_address">
-                    </li>
-                    <li>
-                        <label for="email_confirm">*&nbsp;<?php echo __('Confirm e-mail'); ?></label>
-                        <input type="email" class="required" id="email_confirm" name="email_confirm">
-                    </li>
-                    <?php include_component('main/captcha'); ?>
-                </ul>
-                <div class="login_button_container">
-                    <input type="submit" class="button button-green" id="register_button" value="<?php echo __('Register'); ?>">
+        <h2><?php echo __('Create an account'); ?></h2>
+        <form accept-charset="<?php echo \thebuggenie\core\framework\Context::getI18n()->getCharset(); ?>" action="<?php echo make_url('register'); ?>" method="post" id="register_form" onsubmit="TBG.Main.Login.register('<?php echo make_url('register'); ?>'); return false;">
+            <div class="form-group">
+                <label for="fieldusername">*&nbsp;<?php echo __('Username'); ?></label>
+                <div class="control-wrapper">
+                    <input type="text" class="required" id="fieldusername" name="fieldusername" onblur="TBG.Main.Login.checkUsernameAvailability('<?php echo make_url('register_check_username'); ?>');">
                 </div>
-            </form>
-        </div>
+            </div>
+            <div class="form-group">
+                <label for="buddyname">*&nbsp;<?php echo __('Nickname'); ?></label>
+                <div class="control-wrapper">
+                    <input type="text" class="required" id="buddyname" name="buddyname">
+                    <div class="help-block"><?php echo __('The "nickname" will be shown to other users'); ?></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email_address">*&nbsp;<?php echo __('E-mail address'); ?></label>
+                <div class="control-wrapper">
+                    <input type="email" class="required" id="email_address" name="email_address">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email_confirm">*&nbsp;<?php echo __('Confirm e-mail'); ?></label>
+                <div class="control-wrapper">
+                    <input type="email" class="required" id="email_confirm" name="email_confirm">
+                </div>
+            </div>
+            <?php include_component('main/captcha'); ?>
+            <div class="form-group">
+                <div class="button-wrapper">
+                    <button type="submit" class="btn btn-default" id="register_button"><?php echo __('Register'); ?></button>
+                </div>
+            </div>
+        </form>
 
         <div style="display: none;" id="register_confirmation">
             <h2><?php echo __('Register a new account'); ?></h2>

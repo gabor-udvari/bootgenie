@@ -40,6 +40,8 @@ class Bootgenie extends \thebuggenie\core\entities\Module
         $this->addOverride('main/loginregister', 'bootgenie/main_loginregister', 'component');
         $this->addOverride('main/login', 'bootgenie/main_login', 'component');
         $this->addOverride('main/menulinks', 'bootgenie/main_menulinks', 'component');
+        $this->addOverride('main/captcha', 'bootgenie/main_captcha', 'component');
+        $this->addOverride('main/openidbuttons', 'bootgenie/main_openidbuttons', 'component');
 
         $this->addOverride('publish/showarticle', 'bootgenie/publish_showarticle', 'action');
         // $this->addOverride('publish/showarticle', 'bootgenie/publish/showarticle', 'action');
@@ -55,7 +57,7 @@ class Bootgenie extends \thebuggenie\core\entities\Module
         $this->addOverride('agile/headermenuprojectlinks', 'bootgenie/agile_headermenuprojectlinks', 'component');
 
         // Disable for testing
-        // $this->_enabled = false;
+        $this->_enabled = false;
     }
 
     protected function _addListeners()

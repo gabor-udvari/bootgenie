@@ -10,7 +10,7 @@
 
 </script>
 
-<div class="logindiv regular active col-md-6" id="regular_login_container">
+<div id="regular_login_container">
 
     <?php if ($loginintro instanceof \thebuggenie\modules\publish\entities\Article): ?>
         <?php include_component('publish/articledisplay', array('article' => $loginintro, 'show_title' => false, 'show_details' => false, 'show_actions' => false, 'embedded' => true)); ?>
@@ -23,25 +23,33 @@
         <?php else: ?>
             <input type="hidden" id="return_to" name="return_to" value="<?php echo $referer; ?>" />
         <?php endif; ?>
-        <ul class="login_formlist">
-            <li>
-                <label for="tbg3_username"><?php echo __('Username'); ?></label>
+        <div class="form-group">
+            <label for="tbg3_username"><?php echo __('Username'); ?></label>
+            <div class="control-wrapper">
                 <input type="text" id="tbg3_username" name="tbg3_username">
-            </li>
-            <li>
-                <label for="tbg3_password"><?php echo __('Password'); ?></label>
-                <input type="password" id="tbg3_password" name="tbg3_password"><br>
-            </li>
-            <li>
-                <input type="checkbox" name="tbg3_rememberme" value="1" id="tbg3_rememberme"><label class="login_fieldlabel" for="tbg3_rememberme"><?php echo __('Keep me logged in'); ?></label>
-            </li>
-        </ul>
-        <div class="login_button_container">
-            <?php \thebuggenie\core\framework\Event::createNew('core', 'login_button_container')->trigger(); ?>
-            <?php echo image_tag('spinning_20.gif', array('id' => 'login_indicator', 'style' => 'display: none;')); ?>
-            <input type="submit" id="login_button" class="button button-silver" value="<?php echo __('Log in'); ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tbg3_password"><?php echo __('Password'); ?></label>
+            <div class="control-wrapper">
+                <input type="password" id="tbg3_password" name="tbg3_password">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox-wrapper">
+                <div class="checkbox">
+                    <label for="tbg3_rememberme"><input type="checkbox" name="tbg3_rememberme" value="1" id="tbg3_rememberme"><?php echo __('Keep me logged in'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="button-wrapper">
+                <?php \thebuggenie\core\framework\Event::createNew('core', 'login_button_container')->trigger(); ?>
+                <button type="submit" id="login_button" class="btn btn-default"><?php echo __('Log in'); ?></button>
+            </div>
         </div>
     </form>
+
     <?php if (\thebuggenie\core\framework\Settings::isPersonaAvailable() || \thebuggenie\core\framework\Settings::isOpenIDavailable()): ?>
         <div style="text-align: center;">
             <fieldset style="border: 0; border-top: 1px dotted rgba(0, 0, 0, 0.3); padding: 10px 100px; width: 100px; margin: 15px auto 0 auto;">
@@ -64,9 +72,7 @@
 
 <?php \thebuggenie\core\framework\Event::createNew('core', 'login_form_pane')->trigger(array_merge(array('selected_tab' => $selected_tab), $options)); ?>
 <?php if (\thebuggenie\core\framework\Settings::isRegistrationAllowed()): ?>
-    <div id="registration-button-container" class="logindiv login_button_container registration_button_container active col-md-6">
-        <?php include_component('main/loginregister', compact('registrationintro')); ?>
-    </div>
+    <?php include_component('main/loginregister', compact('registrationintro')); ?>
 <?php endif; ?>
 
 <?php if (isset($error)): ?>
