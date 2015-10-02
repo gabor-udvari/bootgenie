@@ -50,9 +50,9 @@
         </div>
     </form>
 
-    <fieldset style="border: 0; border-top: 1px dotted rgba(0, 0, 0, 0.3); padding: 10px 100px; width: 100px; margin: 20px auto 0 auto;">
-        <legend style="text-align: center; width: 100%; background-color: transparent;"><?php echo __('%regular_login or %persona_or_openid_login', array('%regular_login' => '', '%persona_or_openid_login' => '')); ?></legend>
-    </fieldset>
+   <div class="section-separator">
+      <span><?php echo __('%regular_login or %persona_or_openid_login', array('%regular_login' => '', '%persona_or_openid_login' => '')); ?></span>
+   </div>
 
     <?php if (\thebuggenie\core\framework\Settings::isPersonaAvailable() || \thebuggenie\core\framework\Settings::isOpenIDavailable()): ?>
     <div style="text-align: center;">
@@ -62,9 +62,9 @@
     </div>
     <?php endif; ?>
 
-    <fieldset style="border: 0; border-top: 1px dotted rgba(0, 0, 0, 0.3); padding: 10px 100px; width: 100px; margin: 20px auto 0 auto;">
-        <legend style="text-align: center; width: 100%; background-color: transparent;"><?php echo __('%regular_login or %persona_or_openid_login', array('%regular_login' => '', '%persona_or_openid_login' => '')); ?></legend>
-    </fieldset>
+   <div class="section-separator">
+      <span><?php echo __('%regular_login or %persona_or_openid_login', array('%regular_login' => '', '%persona_or_openid_login' => '')); ?></span>
+   </div>
 
     <?php if (\thebuggenie\core\framework\Settings::isOpenIDavailable()): ?>
         <?php include_component('main/openidbuttons'); ?>
