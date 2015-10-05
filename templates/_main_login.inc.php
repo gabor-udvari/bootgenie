@@ -12,11 +12,11 @@
 
 <div id="regular_login_container">
 
-    <?php if ($loginintro instanceof \thebuggenie\modules\publish\entities\Article): ?>
-        <?php include_component('publish/articledisplay', array('article' => $loginintro, 'show_title' => false, 'show_details' => false, 'show_actions' => false, 'embedded' => true)); ?>
+   <?php if ($loginintro instanceof \thebuggenie\modules\publish\entities\Article): ?>
+      <?php include_component('publish/articledisplay', array('article' => $loginintro, 'show_title' => false, 'show_details' => false, 'show_actions' => false, 'embedded' => true)); ?>
     <?php endif; ?>
 
-    <h2><?php echo __('Log in with your username and password'); ?></h2>
+      <h2><?php echo __('Log in with your username and password'); ?></h2>
     <form accept-charset="<?php echo \thebuggenie\core\framework\Context::getI18n()->getCharset(); ?>" action="<?php echo make_url('login'); ?>" method="post" id="login_form" onsubmit="TBG.Main.Login.login('<?php echo make_url('login'); ?>'); return false;">
         <?php if (!\thebuggenie\core\framework\Context::hasMessage('login_force_redirect') || \thebuggenie\core\framework\Context::getMessage('login_force_redirect') !== true): ?>
             <input type="hidden" id="tbg3_referer" name="tbg3_referer" value="<?php echo $referer; ?>" />
@@ -36,11 +36,9 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="checkbox-wrapper">
-                <div class="checkbox">
-                    <label for="tbg3_rememberme"><input type="checkbox" name="tbg3_rememberme" value="1" id="tbg3_rememberme"><?php echo __('Keep me logged in'); ?></label>
-                </div>
-            </div>
+           <div class="checkbox-wrapper">
+                 <label for="tbg3_rememberme"><input type="checkbox" name="tbg3_rememberme" value="1" id="tbg3_rememberme"><?php echo __('Keep me logged in'); ?></label>
+           </div>
         </div>
         <div class="form-group">
             <div class="button-wrapper">

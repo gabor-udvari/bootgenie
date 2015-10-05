@@ -208,6 +208,15 @@ input[type="email"] {
     // repeat this here
     padding-left: 20px;
     text-align: left;
+    font-weight: normal;
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    margin-left: -20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 7px;
   }
 }
 
