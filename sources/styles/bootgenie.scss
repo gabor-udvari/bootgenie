@@ -130,15 +130,15 @@
 // Login
 
 #regular_login_container {
-  @include make-md-column-offset(1);
-  @include make-md-column(4);
-  box-sizing: content-box;
-  padding-right: 8.3333%; // same as one column + gutter
+  // @include make-md-column-offset(1);
+  @include make-md-column(5);
+  min-width: 50% !important; // 41.6667% + 8.333%
+  padding-right: 8.333%; // same as one column + gutter
   border-right: 1px solid $gray-lighter;
 }
 #registration-button-container {
   @include make-md-column-offset(1);
-  @include make-md-column(4);
+  @include make-md-column(5);
 }
 
 .section-separator {
