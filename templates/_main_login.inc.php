@@ -55,7 +55,7 @@
    </div>
 
     <?php if (\thebuggenie\core\framework\Settings::isPersonaAvailable() || \thebuggenie\core\framework\Settings::isOpenIDavailable()): ?>
-    <div style="text-align: center;">
+    <div style="text-align: center">
         <?php if (\thebuggenie\core\framework\Settings::isPersonaAvailable()): ?>
             <a class="persona-button" id="persona-signin-button" href="#"><span><?php echo __('Sign in with Persona'); ?></span></a>
         <?php endif; ?>
